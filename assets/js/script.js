@@ -372,7 +372,7 @@ function register() {
         control.popup("Enter Mobile", W);
       } else if (document.getElementById('mobile').value.length!=11) {
         control.popup("Enter 11 Digit Mobile Number", W);
-      } else if (ans == '09') {
+      } else if (ans == '01') {
         control.html("lgbtn", "wait...");
         $.ajax({
           url: "../assets/backend/auth/register.php",
@@ -397,7 +397,7 @@ function register() {
           },
         });
       }else {
-        control.popup("Enter 09 Before Number Digit", W);
+        control.popup("Enter 01 Before Number Digit", W);
       }
     }else{
       control.popup("Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters", W);

@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$con= mysqli_connect('fdb32.awardspace.net','4050821_eagri','Franz2000');
-mysqli_select_db($con,'4050821_eagri');
+$con= mysqli_connect('localhost','root','');
+mysqli_select_db($con,'grocerry');
 define('D',"/backend_projects/grocerry");
 ?>

@@ -1,13 +1,13 @@
 <?php
- require('require/top.php');
- authorise($con);
- if(!isset($_GET['d'])){
-     redirect('index.php');
-     die();
- }
- $id=$_GET['d'];
- $product_id=$_GET['d'];
- $product=product_detail($con,$product_id);
+require('require/top.php');
+authorise($con);
+if (!isset($_GET['d'])) {
+    redirect('index.php');
+    die();
+}
+$id = $_GET['d'];
+$product_id = $_GET['d'];
+$product = product_detail($con, $product_id);
 ?>
 <div class="path">
     <div class="container">
@@ -59,12 +59,12 @@
                                 <ul>
                                     <li>
                                         <div class="main-price color-discount">
-                                            Discount Price<span>&#8369;<?php echo $product['fa']; ?></span>
+                                            Discount Price<span>BDT<?php echo $product['fa']; ?></span>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="main-price mrp-price">
-                                            SRP Price<span>&#8369;<?php echo $product['price']; ?></span>
+                                            SRP Price<span>BDT<?php echo $product['price']; ?></span>
                                         </div>
                                     </li>
                                 </ul>
@@ -84,18 +84,18 @@
                                 </ul>
                             </div>
                             <?php
-                                if($product['isappp']==2){
-                                    $query="select * from p_reject where product_id='$id'";
-                                    $res=mysqli_query($con,$query);
-                                    $row=mysqli_fetch_assoc($res);
+                            if ($product['isappp'] == 2) {
+                                $query = "select * from p_reject where product_id='$id'";
+                                $res = mysqli_query($con, $query);
+                                $row = mysqli_fetch_assoc($res);
                             ?>
-                            <div class="product-group-dt mt3" style="background:none">
-                                <div class="reject-badge-red">
-                                    This Product Has Been Rejected. <br>Remarks: <?php echo $row['cause']; ?>
+                                <div class="product-group-dt mt3" style="background:none">
+                                    <div class="reject-badge-red">
+                                        This Product Has Been Rejected. <br>Remarks: <?php echo $row['cause']; ?>
+                                    </div>
                                 </div>
-                            </div>
                             <?php
-                                }
+                            }
                             ?>
                         </div>
                     </div>
@@ -117,21 +117,21 @@
                                             <div class="pdct-dt-step">
                                                 <h4>Seller</h4>
                                                 <div class="product_attr">
-                                                    <?php 
-                                $t=$product['added_by'];
-                                $ti=$product['id'];
-                                $h=mysqli_fetch_assoc(mysqli_query($con,"select b_name from sellers where id='$t'"));
-                                $hi=mysqli_fetch_assoc(mysqli_query($con,"select added_on from product_ad_on where pid='$ti'"));
-                                echo $h['b_name']; ?>
+                                                    <?php
+                                                    $t = $product['added_by'];
+                                                    $ti = $product['id'];
+                                                    $h = mysqli_fetch_assoc(mysqli_query($con, "select b_name from sellers where id='$t'"));
+                                                    $hi = mysqli_fetch_assoc(mysqli_query($con, "select added_on from product_ad_on where pid='$ti'"));
+                                                    echo $h['b_name']; ?>
                                                 </div>
                                             </div>
                                             <div class="pdct-dt-step">
                                                 <h4>Added On</h4>
                                                 <div class="product_attr">
-                                                    <?php 
-                                $ti=$product['id'];
-                                $hi=mysqli_fetch_assoc(mysqli_query($con,"select added_on from product_ad_on where pid='$ti'"));
-                                echo $hi['added_on']; ?>
+                                                    <?php
+                                                    $ti = $product['id'];
+                                                    $hi = mysqli_fetch_assoc(mysqli_query($con, "select added_on from product_ad_on where pid='$ti'"));
+                                                    echo $hi['added_on']; ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -146,5 +146,5 @@
     </div>
 </div>
 <?php
-    require("require/foot.php");
+require("require/foot.php");
 ?>

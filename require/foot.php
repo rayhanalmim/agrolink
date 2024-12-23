@@ -6,13 +6,12 @@
                     <li>
                         <a href="#">
                             <i class="uil uil-dialpad-alt"></i>
-                            (088) 545-0123
-                        </a>
+                            +88017-61322176 </a>
                     </li>
                     <li>
                         <a href="#">
                             <i class="uil uil-envelope-alt"></i>
-                            info@E-Agri.com
+                            info@AgroLink.com
                         </a>
                     </li>
                 </ul>
@@ -41,7 +40,7 @@
             </div>
         </div>
     </div>
-    <?php if (isset($_GET['utm_source']) || isset($_SESSION['utm_source'])){ ?>
+    <?php if (isset($_GET['utm_source']) || isset($_SESSION['utm_source'])) { ?>
         <div class="footer-row2">
             <div class="container">
                 <div class="row">
@@ -51,41 +50,41 @@
                         </li>
                         <ul class="ul-sub">
                             <a href="view.php?n=6&k=&scat=1">
-                                <li> Organic Fertilizer </li>
+                                <li> Vegetables </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=2">
-                                <li> Nitrogen Fertilizer </li>
+                                <li> Rice </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=3">
-                                <li> Phosphate Fertilizer </li>
+                                <li> Fruits </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=4">
-                                <li> Potassium Fertilizer </li>
+                                <li> Dairy Products </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=5">
-                                <li> Fertilizer Forms <li>
+                                <li> Grains </li>
                             </a>
                         </ul>
                     </ul>
                     <ul class="ul1">
                         <li class="heading">
-                            <h4>Usefull Links</h4>
+                            <h4>Useful Links</h4>
                         </li>
                         <ul class="ul-sub">
                             <a href="view.php?n=6&k=&scat=1">
-                                <li> Organic Fertilizer </li>
-                            </a>
-                            <a href="view.php?n=6&k=&scat=5">
-                                <li> Fertilizer Forms <li>
+                                <li> Vegetables </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=2">
-                                <li> Nitrogen Fertilizer </li>
-                            </a>
-                            <a href="view.php?n=6&k=&scat=4">
-                                <li> Potassium Fertilizer </li>
+                                <li> Rice </li>
                             </a>
                             <a href="view.php?n=6&k=&scat=3">
-                                <li> Phosphate Fertilizer </li>
+                                <li> Fruits </li>
+                            </a>
+                            <a href="view.php?n=6&k=&scat=4">
+                                <li> Dairy Products </li>
+                            </a>
+                            <a href="view.php?n=6&k=&scat=5">
+                                <li> Grains </li>
                             </a>
                         </ul>
                     </ul>
@@ -95,28 +94,16 @@
                         </li>
                         <ul class="ul-sub">
                             <a href="index.php?utm_source=20">
-                                <li> Ozamiz </li>
+                                <li> Dhaka </li>
                             </a>
                             <a href="index.php?utm_source=29">
-                                <li> Aloran </li>
+                                <li> Chattogram </li>
                             </a>
                             <a href="index.php?utm_source=19">
-                                <li> Panaon </li>
+                                <li> Rajshahi </li>
                             </a>
                             <a href="index.php?utm_source=15">
-                                <li> Tangub </li>
-                            </a>
-                            <a href="index.php?utm_source=25">
-                                <li> Clarin </li>
-                            </a>
-                            <a href="index.php?utm_source=24">
-                                <li> Concepcion </li>
-                            </a>
-                            <a href="index.php?utm_source=17">
-                                <li> Sapang Dalaga </li>
-                            </a>
-                            <a href="index.php?utm_source=14">
-                                <li> Tudela </li>
+                                <li> Sylhet </li>
                             </a>
                         </ul>
                     </ul>
@@ -134,7 +121,7 @@
                 </div>
             </div>
         </div>
-    <?php } else{ ?>
+    <?php } else { ?>
         <div class="footer-row2">
             <div class="container">
                 <div class="row">
@@ -142,40 +129,36 @@
                         <li class="heading">
                             <h4>Categories</h4>
                         </li>
-                            <ul class="ul-sub">
-                                <li> Organic Fertilizer </li>
-                                <li> Nitrogen Fertilizer </li>
-                                <li> Phosphate Fertilizer </li>
-                                <li> Potassium Fertilizer </li>
-                                <li> Fertilizer Forms <li>
-                            </ul>
+                        <ul class="ul-sub">
+                            <li> Vegetables </li>
+                            <li> Rice </li>
+                            <li> Fruits </li>
+                            <li> Dairy Products </li>
+                            <li> Grains </li>
+                        </ul>
                     </ul>
                     <ul class="ul1">
                         <li class="heading">
-                            <h4>Usefull Links</h4>
+                            <h4>Useful Links</h4>
                         </li>
-                            <ul class="ul-sub">
-                                <li> Organic Fertilizer </li>
-                                <li> Fertilizer Forms <li>
-                                     Nitrogen Fertilizer 
-                                <li> Potassium Fertilizer </li>
-                                <li> Phosphate Fertilizer </li>
-                            </ul>
+                        <ul class="ul-sub">
+                            <li> Vegetables </li>
+                            <li> Rice </li>
+                            <li> Fruits </li>
+                            <li> Dairy Products </li>
+                            <li> Grains </li>
+                        </ul>
                     </ul>
                     <ul class="ul1">
                         <li class="heading">
                             <h4>Top Cities</h4>
                         </li>
-                            <ul class="ul-sub">
-                                <li> Ozamiz </li>
-                                <li> Aloran </li>
-                                <li> Panaon </li>
-                                <li> Tangub </li>
-                                <li> Clarin </li>
-                                <li> Concepcion </li>
-                                <li> Sapang Dalaga </li>
-                                <li> Tudela </li>
-                            </ul>
+                        <ul class="ul-sub">
+                            <li> Dhaka </li>
+                            <li> Chattogram </li>
+                            <li> Rajshahi </li>
+                            <li> Sylhet </li>
+                        </ul>
                     </ul>
                     <ul class="ul1">
                         <li class="heading thd">
@@ -191,9 +174,9 @@
                 </div>
             </div>
         </div>
-        <?php } ?>
+    <?php } ?>
     <div class="footer-3">
-        <span> Copyright 2022 E-Agri. All rights reserved </span>
+        <span> Copyright 2024 AgroLink. All rights reserved </span>
     </div>
 </section>
 <script src="assets/js/script.js"></script>

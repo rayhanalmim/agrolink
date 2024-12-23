@@ -204,6 +204,10 @@ i {
   margin-left: -15px;
 }
 
+.custom-gap {
+  gap: 2px;
+}
+
 .main-banner-slider .container .row .owl-carousel .item {
   background-color: #fff;
   padding: 0.6rem;

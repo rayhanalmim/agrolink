@@ -1,7 +1,7 @@
-<?php 
+<?php
 require('require/top.php');
-$pid=$_GET['pid'];
-$product=product_detail($con,$pid);
+$pid = $_GET['pid'];
+$product = product_detail($con, $pid);
 ?>
 <div class="path">
     <div class="container">
@@ -44,195 +44,195 @@ $product=product_detail($con,$pid);
                         <p class="pd-no">Product No.<span><?php echo $product['sku']; ?></span></p>
                         <p class="stock-qty">
                             <?php
-                             if($product['qty']>0){
-                                  echo "Available<span>(In Stock)</span>"; 
-                            }else{
+                            if ($product['qty'] > 0) {
+                                echo "Available<span>(In Stock)</span>";
+                            } else {
                                 echo "Unavailable<span>(Out of Stock)</span>";
                             } ?></p>
-                            <p> Stock<span>(<?php echo $product['qty']; ?>)</span> </p>
+                        <p> Stock<span>(<?php echo $product['qty']; ?>)</span> </p>
                     </div>
                     <div class="product-group-dt">
                         <ul>
                             <li>
                                 <div class="main-price color-discount">
-                                    Discount Price<span>&#8369;<?php echo $product['fa']; ?></span>
+                                    Discount Price<span>BDT<?php echo $product['fa']; ?></span>
                                 </div>
                             </li>
                             <li>
                                 <div class="main-price mrp-price">
-                                    SRP Price<span>&#8369;<?php echo $product['price']; ?></span>
+                                    SRP Price<span>BDT<?php echo $product['price']; ?></span>
                                 </div>
                             </li>
                         </ul>
                         <ul class="gty-wish-share">
                             <li>
                                 <?php
-                            if(!isset($_SESSION['USER_LOGIN'])){
-                                if(isset($_SESSION['USER_CART'])){
-                                    if(in_array($product['id'],$_SESSION['USER_CART'])){
-                                        $index=array_search($product['id'],$_SESSION['USER_CART']);
-                                    ?>
+                                if (!isset($_SESSION['USER_LOGIN'])) {
+                                    if (isset($_SESSION['USER_CART'])) {
+                                        if (in_array($product['id'], $_SESSION['USER_CART'])) {
+                                            $index = array_search($product['id'], $_SESSION['USER_CART']);
+                                ?>
 
-                                <div class="qty-product">
-                                    <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus minus-btn"
-                                            onclick="decrement(this)" />
-                                        <input type="number" name="quantity" disabled="disabled"
-                                            value="<?php echo $_SESSION['CART_QTY'][$index]; ?>"
-                                            class="input-text qty text" style="width:5rem" id="single-product-qty" />
-                                        <input type="button" value="+" class="plus plus-btn"
-                                            onclick="increment(this)" />
-                                    </div>
-                                </div>
+                                            <div class="qty-product">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" value="-" class="minus minus-btn"
+                                                        onclick="decrement(this)" />
+                                                    <input type="number" name="quantity" disabled="disabled"
+                                                        value="<?php echo $_SESSION['CART_QTY'][$index]; ?>"
+                                                        class="input-text qty text" style="width:5rem" id="single-product-qty" />
+                                                    <input type="button" value="+" class="plus plus-btn"
+                                                        onclick="increment(this)" />
+                                                </div>
+                                            </div>
 
-                                <?php
-                                    }else{
+                                        <?php
+                                        } else {
                                         ?>
 
-                                <div class="qty-product">
-                                    <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus minus-btn"
-                                            onclick="decrement(this)" />
-                                        <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
-                                            style="width:5rem" id="single-product-qty" />
-                                        <input type="button" value="+" class="plus plus-btn"
-                                            onclick="increment(this)" />
-                                    </div>
-                                </div>
+                                            <div class="qty-product">
+                                                <div class="quantity buttons_added">
+                                                    <input type="button" value="-" class="minus minus-btn"
+                                                        onclick="decrement(this)" />
+                                                    <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
+                                                        style="width:5rem" id="single-product-qty" />
+                                                    <input type="button" value="+" class="plus plus-btn"
+                                                        onclick="increment(this)" />
+                                                </div>
+                                            </div>
+
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+
+                                        <div class="qty-product">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" value="-" class="minus minus-btn"
+                                                    onclick="decrement(this)" />
+                                                <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
+                                                    style="width:5rem" id="single-product-qty" />
+                                                <input type="button" value="+" class="plus plus-btn"
+                                                    onclick="increment(this)" />
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    }
+                                } else {
+                                    $p_idd = $product['id'];
+                                    $u_id = $_SESSION['USER_ID'];
+                                    $query = "select cart.u_id,cart_detail.qty from cart,cart_detail where cart.u_id='$u_id' and cart_detail.p_id='$p_idd' and cart_detail.cart_id=cart.id";
+                                    $rs = mysqli_query($con, $query);
+                                    $i = mysqli_num_rows($rs);
+                                    if ($i > 0) {
+                                        $g = mysqli_fetch_assoc($rs);
+                                    ?>
+
+                                        <div class="qty-product">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" value="-" class="minus minus-btn"
+                                                    onclick="decrement(this)" />
+                                                <input type="number" name="quantity" disabled="disabled" value="<?php echo $g['qty'] ?>"
+                                                    class="input-text qty text" style="width:5rem" id="single-product-qty" />
+                                                <input type="button" value="+" class="plus plus-btn"
+                                                    onclick="increment(this)" />
+                                            </div>
+                                        </div>
+
+                                    <?php
+                                    } else {
+                                    ?>
+
+                                        <div class="qty-product">
+                                            <div class="quantity buttons_added">
+                                                <input type="button" value="-" class="minus minus-btn"
+                                                    onclick="decrement(this)" />
+                                                <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
+                                                    style="width:5rem" id="single-product-qty" />
+                                                <input type="button" value="+" class="plus plus-btn"
+                                                    onclick="increment(this)" />
+                                            </div>
+                                        </div>
 
                                 <?php
                                     }
-                                }else{
-                                    ?>
-
-                                <div class="qty-product">
-                                    <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus minus-btn"
-                                            onclick="decrement(this)" />
-                                        <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
-                                            style="width:5rem" id="single-product-qty" />
-                                        <input type="button" value="+" class="plus plus-btn"
-                                            onclick="increment(this)" />
-                                    </div>
-                                </div>
-
-                                <?php
                                 }
-                            }else{
-                                $p_idd=$product['id'];
-        $u_id=$_SESSION['USER_ID'];
-        $query="select cart.u_id,cart_detail.qty from cart,cart_detail where cart.u_id='$u_id' and cart_detail.p_id='$p_idd' and cart_detail.cart_id=cart.id";
-        $rs=mysqli_query($con,$query);
-        $i=mysqli_num_rows($rs);
-        if($i>0){
-            $g=mysqli_fetch_assoc($rs);
-            ?>
-
-                                <div class="qty-product">
-                                    <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus minus-btn"
-                                            onclick="decrement(this)" />
-                                        <input type="number" name="quantity" disabled="disabled" value="<?php echo $g['qty'] ?>"
-                                            class="input-text qty text" style="width:5rem" id="single-product-qty" />
-                                        <input type="button" value="+" class="plus plus-btn"
-                                            onclick="increment(this)" />
-                                    </div>
-                                </div>
-
-                                <?php
-        }else{
-            ?>
-
-                                <div class="qty-product">
-                                    <div class="quantity buttons_added">
-                                        <input type="button" value="-" class="minus minus-btn"
-                                            onclick="decrement(this)" />
-                                        <input type="number" name="quantity" disabled="disabled" value="1" class="input-text qty text"
-                                            style="width:5rem" id="single-product-qty" />
-                                        <input type="button" value="+" class="plus plus-btn"
-                                            onclick="increment(this)" />
-                                    </div>
-                                </div>
-
-                                <?php
-        }
-                            }
-                            ?>
+                                ?>
 
 
                             </li>
                             <li>
                                 <?php
-                            if(!isset($_SESSION['USER_LOGIN'])){
-                            ?>
-                                <i class="uil uil-heart" onclick="addwish(<?php echo $product['id']; ?>)"></i>
-                                <?php
-                            }else{
-                                $pid=$product['id'];
-                                $uid=$_SESSION['USER_ID'];
-                                $n=mysqli_num_rows(mysqli_query($con,"select * from wishlist where u_id='$uid' and p_id='$pid'"));
-                                if($n>0){
+                                if (!isset($_SESSION['USER_LOGIN'])) {
+                                ?>
+                                    <i class="uil uil-heart" onclick="addwish(<?php echo $product['id']; ?>)"></i>
+                                    <?php
+                                } else {
+                                    $pid = $product['id'];
+                                    $uid = $_SESSION['USER_ID'];
+                                    $n = mysqli_num_rows(mysqli_query($con, "select * from wishlist where u_id='$uid' and p_id='$pid'"));
+                                    if ($n > 0) {
                                     ?>
-                                <i class="uil uil-heart" onclick="gowish()"></i>
-                                <?php
-                                }else{
+                                        <i class="uil uil-heart" onclick="gowish()"></i>
+                                    <?php
+                                    } else {
                                     ?>
-                                <i class="uil uil-heart" onclick="addwish(<?php echo $product['id']; ?>)"></i>
+                                        <i class="uil uil-heart" onclick="addwish(<?php echo $product['id']; ?>)"></i>
                                 <?php
+                                    }
                                 }
-                            }
-                            ?>
+                                ?>
                             </li>
                         </ul>
                         <ul class="ordr-crt-share">
                             <li>
                                 <?php
-    if(!isset($_SESSION['USER_LOGIN'])){
-        if(isset($_SESSION['USER_CART'])){
-            if(in_array($product['id'],$_SESSION['USER_CART'])){
-                ?>
-                                <button class="order-btn hover-btn" onclick="go_to_cart()">
-                                    <i class="uil uil-shopping-cart-alt"></i> Go to Cart
-                                </button>
+                                if (!isset($_SESSION['USER_LOGIN'])) {
+                                    if (isset($_SESSION['USER_CART'])) {
+                                        if (in_array($product['id'], $_SESSION['USER_CART'])) {
+                                ?>
+                                            <button class="order-btn hover-btn" onclick="go_to_cart()">
+                                                <i class="uil uil-shopping-cart-alt"></i> Go to Cart
+                                            </button>
+                                        <?php
+                                        } else {
+                                        ?>
+                                            <button class="order-btn hover-btn"
+                                                onclick="addToCart(<?php echo $product['id']; ?>,this)">
+                                                <i class="uil uil-shopping-cart-alt"></i> Add to Cart
+                                            </button>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
+                                        <button class="order-btn hover-btn"
+                                            onclick="addToCart(<?php echo $product['id']; ?>,this)">
+                                            <i class="uil uil-shopping-cart-alt"></i> Add to Cart
+                                        </button>
+                                    <?php
+                                    }
+                                } else {
+                                    $p_idd = $product['id'];
+                                    $u_id = $_SESSION['USER_ID'];
+                                    $query = "select cart.u_id,cart_detail.qty from cart,cart_detail where cart.u_id='$u_id' and cart_detail.p_id='$p_idd' and cart_detail.cart_id=cart.id";
+                                    $rs = mysqli_query($con, $query);
+                                    $i = mysqli_num_rows($rs);
+                                    if ($i > 0) {
+                                    ?>
+                                        <button class="order-btn hover-btn" onclick="go_to_cart()">
+                                            <i class="uil uil-shopping-cart-alt"></i> Go to Cart
+                                        </button>
+                                    <?php
+                                    } else {
+                                    ?>
+                                        <button class="order-btn hover-btn"
+                                            onclick="addToCart(<?php echo $product['id']; ?>,this)">
+                                            <i class="uil uil-shopping-cart-alt"></i> Add to Cart
+                                        </button>
                                 <?php
-            }else{
-                ?>
-                                <button class="order-btn hover-btn"
-                                    onclick="addToCart(<?php echo $product['id']; ?>,this)">
-                                    <i class="uil uil-shopping-cart-alt"></i> Add to Cart
-                                </button>
-                                <?php
-            }
-        }else{
-            ?>
-                                <button class="order-btn hover-btn"
-                                    onclick="addToCart(<?php echo $product['id']; ?>,this)">
-                                    <i class="uil uil-shopping-cart-alt"></i> Add to Cart
-                                </button>
-                                <?php
-        }
-    }else{
-        $p_idd=$product['id'];
-        $u_id=$_SESSION['USER_ID'];
-        $query="select cart.u_id,cart_detail.qty from cart,cart_detail where cart.u_id='$u_id' and cart_detail.p_id='$p_idd' and cart_detail.cart_id=cart.id";
-        $rs=mysqli_query($con,$query);
-        $i=mysqli_num_rows($rs);
-        if($i>0){
-                ?>
-                                <button class="order-btn hover-btn" onclick="go_to_cart()">
-                                    <i class="uil uil-shopping-cart-alt"></i> Go to Cart
-                                </button>
-                                <?php
-        }else{
-            ?>
-                                <button class="order-btn hover-btn"
-                                    onclick="addToCart(<?php echo $product['id']; ?>,this)">
-                                    <i class="uil uil-shopping-cart-alt"></i> Add to Cart
-                                </button>
-                                <?php
-        }
-    }
-?>
+                                    }
+                                }
+                                ?>
 
 
                             </li>
@@ -280,26 +280,27 @@ $product=product_detail($con,$pid);
                             </div>
                             <div class="product-container">
                                 <?php
-                                 $location=$_SESSION['utm_source'];
-                                 $rs=mysqli_query($con,"select * from product where belonging_city='$location'");
-                                 if(mysqli_num_rows($rs)>0){
-                                while($row=mysqli_fetch_assoc($rs)){
+                                $location = $_SESSION['utm_source'];
+                                $rs = mysqli_query($con, "select * from product where belonging_city='$location'");
+                                if (mysqli_num_rows($rs) > 0) {
+                                    while ($row = mysqli_fetch_assoc($rs)) {
                                 ?>
-                                <div class="card">
-                                    <a href="product_detail.php?pid=<?php echo $row['id']; ?>">
-                                        <img src="media/product/<?php echo $row['img1']; ?>" alt="main-image" />
-                                    </a>
-                                    <div class="detail">
-                                        <h4><?php echo $row['product_name']; ?></h4>
-                                        <div class="qty-group">
-                                            <div class="cart-item-price">
-                                                &#8369;<?php echo $row['fa']; ?>
-                                                <span>&#8369;<?php echo $row['price']; ?></span>
+                                        <div class="card">
+                                            <a href="product_detail.php?pid=<?php echo $row['id']; ?>">
+                                                <img src="media/product/<?php echo $row['img1']; ?>" alt="main-image" />
+                                            </a>
+                                            <div class="detail">
+                                                <h4><?php echo $row['product_name']; ?></h4>
+                                                <div class="qty-group">
+                                                    <div class="cart-item-price">
+                                                        BDT<?php echo $row['fa']; ?>
+                                                        <span>BDT<?php echo $row['price']; ?></span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <?php }} ?>
+                                <?php }
+                                } ?>
                             </div>
                         </div>
                     </div>
@@ -319,12 +320,12 @@ $product=product_detail($con,$pid);
                                     <div class="pdct-dt-step">
                                         <h4>Seller</h4>
                                         <div class="product_attr">
-                                            <?php 
-                                $t=$product['added_by'];
-                                $ti=$product['id'];
-                                $h=mysqli_fetch_assoc(mysqli_query($con,"select b_name from sellers where id='$t'"));
-                                $hi=mysqli_fetch_assoc(mysqli_query($con,"select added_on from product_ad_on where pid='$ti'"));
-                                echo $h['b_name']; ?>
+                                            <?php
+                                            $t = $product['added_by'];
+                                            $ti = $product['id'];
+                                            $h = mysqli_fetch_assoc(mysqli_query($con, "select b_name from sellers where id='$t'"));
+                                            $hi = mysqli_fetch_assoc(mysqli_query($con, "select added_on from product_ad_on where pid='$ti'"));
+                                            echo $h['b_name']; ?>
                                         </div>
                                     </div>
                                 </div>

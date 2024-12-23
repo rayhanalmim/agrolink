@@ -1991,18 +1991,26 @@ function delete_seller(id) {
   });
 }
 function add_neew_user() {
-  let email, pass,mobile,name;
+  let email, pass, mobile, name;
   email = control.getInput("umail");
   pass = control.getInput("upass");
   mobile = control.getInput("umobile");
   name = control.getInput("u-name");
-  if (email == "" || pass == "" || mobile == ""|| name == "") {
+  if (email == "" || pass == "" || mobile == "" || name == "") {
     control.html("pdstatus", "All fields are mandatory");
   } else {
     $.ajax({
       url: "assets/backend/user/add_user.php",
       type: "post",
-      data: "email=" + email + "&pass=" + pass + "&mobile=" + mobile+"&name="+name,
+      data:
+        "email=" +
+        email +
+        "&pass=" +
+        pass +
+        "&mobile=" +
+        mobile +
+        "&name=" +
+        name,
       success: function (html) {
         control.html("pdstatus", "Added successfully.");
         control.reload();
@@ -2015,7 +2023,7 @@ function add_neew_seller() {
   email = control.getInput("umail");
   pass = control.getInput("upass");
   mobile = control.getInput("umobile");
-  
+
   if (email == "" || pass == "" || mobile == "") {
     control.html("pdstatus", "All fields are mandatory");
   } else {
@@ -2040,23 +2048,13 @@ function add_neew_admin() {
   username = control.getInput("aUsername");
   pass = control.getInput("aPassword");
   priv = control.getInput("aPrivilege");
-  if (
-    username == "" ||
-    pass == "" ||
-    priv == "#"
-  ) {
+  if (username == "" || pass == "" || priv == "#") {
     control.html("pdstatus", "All fields are mandatory");
   } else {
     $.ajax({
       url: "assets/backend/admin/add_admin.php",
       type: "post",
-      data:
-        "username=" +
-        username +
-        "&pass=" +
-        pass +
-        "&priv=" +
-        priv,
+      data: "username=" + username + "&pass=" + pass + "&priv=" + priv,
       success: function (html) {
         if (html == 1) {
           control.html("pdstatus", "Added successfully.");
@@ -2166,7 +2164,7 @@ function earning_search() {
         let htl = JSON.parse(html);
         control.html("ttlod", htl.to);
         control.html("scod", htl.so);
-        control.html("t", "&#8369; " + htl.t);
+        control.html("t", "BDT " + htl.t);
         control.html("uscod", htl.to - htl.so);
         control.html("btn", "Search");
       },
@@ -2243,7 +2241,7 @@ function finalize(id) {
     },
   });
 }
-function reassign_finalize(oid){
+function reassign_finalize(oid) {
   $.ajax({
     url: "assets/backend/delivery/refinalize.php",
     type: "post",
@@ -2253,14 +2251,14 @@ function reassign_finalize(oid){
     },
   });
 }
-function finalizewithuser(id){
-  var val=control.getInput("dfghert");
-   $.ajax({
-  url: "assets/backend/delivery/finalize_u.php",
-  type: "post",
-  data: "oid=" + id+ "&val=" + val,
-  success: function (html) {
-    redirect_to("setelmentpending.php");
-  },
-});
+function finalizewithuser(id) {
+  var val = control.getInput("dfghert");
+  $.ajax({
+    url: "assets/backend/delivery/finalize_u.php",
+    type: "post",
+    data: "oid=" + id + "&val=" + val,
+    success: function (html) {
+      redirect_to("setelmentpending.php");
+    },
+  });
 }

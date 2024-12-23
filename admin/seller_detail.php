@@ -1,19 +1,19 @@
 <?php
- require('require/top.php');
- $id=$_GET['sid'];
- $q="select sellers.*,country.cntry_name,state.state_name,city.city_name,pin.pincode,business_type.type from sellers,country,state,city,pin,business_type where sellers.id='$id' and sellers.country=country.id and sellers.state=state.id and sellers.city=city.id and sellers.pin=pin.id and sellers.tob=business_type.id";
- $ts=mysqli_query($con,"select * from seller_wallet where seller_id='$id'");
- $k=mysqli_num_rows($ts);
-if($k>0){
- $t=mysqli_fetch_assoc($ts);
- $wb=$t['ballance'];
-}else{
-    $wb=0;
+require('require/top.php');
+$id = $_GET['sid'];
+$q = "select sellers.*,country.cntry_name,state.state_name,city.city_name,pin.pincode,business_type.type from sellers,country,state,city,pin,business_type where sellers.id='$id' and sellers.country=country.id and sellers.state=state.id and sellers.city=city.id and sellers.pin=pin.id and sellers.tob=business_type.id";
+$ts = mysqli_query($con, "select * from seller_wallet where seller_id='$id'");
+$k = mysqli_num_rows($ts);
+if ($k > 0) {
+    $t = mysqli_fetch_assoc($ts);
+    $wb = $t['ballance'];
+} else {
+    $wb = 0;
 }
- $r=mysqli_query($con,$q);
- $row=mysqli_fetch_assoc($r);
- $plan=$row['plan'];
- ?>
+$r = mysqli_query($con, $q);
+$row = mysqli_fetch_assoc($r);
+$plan = $row['plan'];
+?>
 <div class="wrwr">
     <div class="path" id="path">
         <a href="index.php"><i class="fa fa-home" aria-hidden="true"></i> Dashboard</a>
@@ -51,28 +51,28 @@ if($k>0){
                 <br><br><br><br>
             </div>
             <div class="detail" style="float: right">
-        <?php   if ($plan == 1){ ?>
+                <?php if ($plan == 1) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">FREE</span></h3>
                 <?php } ?>
-        <?php   if ($plan == 2){ ?>
+                <?php if ($plan == 2) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Basic</span></h3>
                 <?php } ?>
-        <?php   if ($plan == 3){ ?>
+                <?php if ($plan == 3) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Standard</span></h3>
-                    <?php } ?>
-        <?php   if ($plan == 4){ ?>
+                <?php } ?>
+                <?php if ($plan == 4) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Premuim</span></h3>
-                    <?php } ?>
-        <?php   if ($plan == 5){ ?>
+                <?php } ?>
+                <?php if ($plan == 5) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Basic⁺</span></h3>
-                    <?php } ?>
-        <?php   if ($plan == 6){ ?>
+                <?php } ?>
+                <?php if ($plan == 6) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Standard⁺</span></h3>
-                    <?php } ?>
-        <?php   if ($plan == 7){ ?>
+                <?php } ?>
+                <?php if ($plan == 7) { ?>
                     <h3>Subscription: <span style="color:#6a7187;">Premuim⁺</span></h3>
                 <?php } ?>
-                
+
             </div>
             <div class="detail" style="float: right">
                 <a href="../media/seller_profile/<?php echo $row['b_crft']; ?>" target="_blank">
@@ -96,26 +96,26 @@ if($k>0){
         </div>
         <div class="wrap">
             <div class="detail" style="margin-bottom:4rem" hidden="true">
-                <h3>Wallet Balance: &#8369;<span><?php echo $wb; ?></span></h3>
-                <a 
-                style="font-size:1.3rem; color:#40464d; text-decoration:underline"
-                href="manual_update.php?sid=<?php echo $_GET['sid'] ?>">Manual Update</a> 
+                <h3>Wallet Balance: BDT<span><?php echo $wb; ?></span></h3>
+                <a
+                    style="font-size:1.3rem; color:#40464d; text-decoration:underline"
+                    href="manual_update.php?sid=<?php echo $_GET['sid'] ?>">Manual Update</a>
                 &nbsp;
-                <a 
-                style="font-size:1.3rem; color:#40464d; text-decoration:underline"
-                href="view_seller_wallet_history.php?sid=<?php echo $_GET['sid'] ?>">View Wallet History</a>
+                <a
+                    style="font-size:1.3rem; color:#40464d; text-decoration:underline"
+                    href="view_seller_wallet_history.php?sid=<?php echo $_GET['sid'] ?>">View Wallet History</a>
             </div>
             <?php
-                if(isset($_GET['req']) && $_GET['req']==1){
-                    $o=mysqli_fetch_assoc(mysqli_query($con,"select * from witdraw_req where s_id='$id'"));
+            if (isset($_GET['req']) && $_GET['req'] == 1) {
+                $o = mysqli_fetch_assoc(mysqli_query($con, "select * from witdraw_req where s_id='$id'"));
             ?>
-            <div class="detail" style="margin-bottom:4rem">
-                <h3>Requested: &#8369;<span><?php echo $o['amount_r']; ?></span></h3>
-                <button style="background:#556ee6;color:#fff; padding:0.8rem; border-radius:5px"
-                    onclick="redirect_to('txn.php?sid=<?php echo $id;  ?>')">Approve Request</button>
-                <button style="background:#556ee6;color:#fff; padding:0.8rem; border-radius:5px"
-                    onclick="reject_req(<?php echo $id;  ?>)">Reject</button>
-            </div>
+                <div class="detail" style="margin-bottom:4rem">
+                    <h3>Requested: BDT<span><?php echo $o['amount_r']; ?></span></h3>
+                    <button style="background:#556ee6;color:#fff; padding:0.8rem; border-radius:5px"
+                        onclick="redirect_to('txn.php?sid=<?php echo $id;  ?>')">Approve Request</button>
+                    <button style="background:#556ee6;color:#fff; padding:0.8rem; border-radius:5px"
+                        onclick="reject_req(<?php echo $id;  ?>)">Reject</button>
+                </div>
             <?php } ?>
         </div>
 
@@ -130,5 +130,5 @@ if($k>0){
     </div>
 </div>
 <?php
- require('require/foot.php');
+require('require/foot.php');
 ?>

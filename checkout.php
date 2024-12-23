@@ -1,10 +1,10 @@
-<?php 
-require('require/top.php'); 
-    authorise_user();
-    user_vfd_efd($con);
-    $checkout=array();
-    $checkout=get_chekout_products($con);
-    $subtotal=0;
+<?php
+require('require/top.php');
+authorise_user();
+user_vfd_efd($con);
+$checkout = array();
+$checkout = get_chekout_products($con);
+$subtotal = 0;
 ?>
 <div class="path">
     <div class="container">
@@ -63,14 +63,14 @@ require('require/top.php');
                                                 <select name="" id="dv-city">
                                                     <option value="#">Select City</option>
                                                     <?php
-                                                      $querys="select * from city order by id desc";
-                                                      $ress=mysqli_query($con,$querys);
-                                                      while($rows=mysqli_fetch_assoc($ress)){
-                                                      ?>
-                                                    <option value="<?php echo $rows['id'] ?>">
-                                                        <?php echo $rows['city_name'] ?></option>
+                                                    $querys = "select * from city order by id desc";
+                                                    $ress = mysqli_query($con, $querys);
+                                                    while ($rows = mysqli_fetch_assoc($ress)) {
+                                                    ?>
+                                                        <option value="<?php echo $rows['id'] ?>">
+                                                            <?php echo $rows['city_name'] ?></option>
                                                     <?php
-                                                      }
+                                                    }
                                                     ?>
                                                 </select>
                                                 <label for="ft">Flat / House / Office No.*</label>
@@ -95,30 +95,30 @@ require('require/top.php');
                                                 <h4>Added Address</h4>
                                                 <div class="row2 mt2" style="display:block" id="ad-ad">
                                                     <?php
-                                                       
-                                                       $template='';
-                                                        $uid=$_SESSION['USER_ID'];
-                                                        $res=mysqli_query($con,"select user_address.*,city.city_name from user_address,city where user_address.uid='$uid' and user_address.user_city=city.id");
-                                                        while($row=mysqli_fetch_assoc($res)){
-                                                            $template=$template.'
+
+                                                    $template = '';
+                                                    $uid = $_SESSION['USER_ID'];
+                                                    $res = mysqli_query($con, "select user_address.*,city.city_name from user_address,city where user_address.uid='$uid' and user_address.user_city=city.id");
+                                                    while ($row = mysqli_fetch_assoc($res)) {
+                                                        $template = $template . '
                                                                 <div class="address-item">
-                                                                <input type="radio" name="dv-ad" value="'.$row['id'].'"
+                                                                <input type="radio" name="dv-ad" value="' . $row['id'] . '"
                                                                     style="width:2rem; height:1.5rem;margin-right:0.8rem;margin-top:0;">
                                                                 <div class="address-icon1">
                                                                     <i class="uil uil-home"></i>
                                                                 </div>
                                                                 <div class="address-dt-all">
-                                                                    <h4>'.$row['type_ad'].'</h4>
+                                                                    <h4>' . $row['type_ad'] . '</h4>
                                                                     <p>
-                                                                        '.$row['user_name'].', '.$row['user_local'].', '.$row['user_add'].',
-                                                                        '.$row['city_name'].', '.$row['user_pin'].',<br>'.$row['user_mobile'].'
+                                                                        ' . $row['user_name'] . ', ' . $row['user_local'] . ', ' . $row['user_add'] . ',
+                                                                        ' . $row['city_name'] . ', ' . $row['user_pin'] . ',<br>' . $row['user_mobile'] . '
                                                                     </p>
                                                                 </div>
                                                                 </div>
                                                             ';
-                                                        }
-                                                        echo $template;
-                                                       ?>
+                                                    }
+                                                    echo $template;
+                                                    ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,17 +151,17 @@ require('require/top.php');
                                             <div class="form">
                                                 <div class="fields">
                                                     <?php
-                                                       $res=mysqli_query($con,"select * from dv_time");
-                                                       while($r=mysqli_fetch_assoc($res)){ 
+                                                    $res = mysqli_query($con, "select * from dv_time");
+                                                    while ($r = mysqli_fetch_assoc($res)) {
                                                     ?>
-                                                    <div class="field">
-                                                        <div class="ui radio checkbox chck-rdio">
-                                                            <input type="radio" name="fruit" tabindex="0"
-                                                                class="hidden" value="<?php echo $r['id'] ?>" />
-                                                            <label><?php echo $r['from'] ?> - <?php echo $r['tto'] ?></label>
+                                                        <div class="field">
+                                                            <div class="ui radio checkbox chck-rdio">
+                                                                <input type="radio" name="fruit" tabindex="0"
+                                                                    class="hidden" value="<?php echo $r['id'] ?>" />
+                                                                <label><?php echo $r['from'] ?> - <?php echo $r['tto'] ?></label>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                <?php } ?>
+                                                    <?php } ?>
                                                 </div>
                                             </div>
                                         </div>
@@ -205,67 +205,67 @@ require('require/top.php');
             <div class="left">
                 <div class="ul-wrapper">
                     <h4>Order Summary</h4>
-                    <?php foreach($checkout as $product){ ?>
-                    <div class="cart-item border_radius">
-                        <div class="cart-product-img">
-                            <img src="media/product/<?php echo $product['img1']; ?>" alt="" />
-                            <div class="offer-badge">
-                                <?php
-                                 $offn=($product['fa']*100)/$product['price'];
-                                 $off=round(100-$offn);
-                                 echo $off.'%';
-                                ?>
+                    <?php foreach ($checkout as $product) { ?>
+                        <div class="cart-item border_radius">
+                            <div class="cart-product-img">
+                                <img src="media/product/<?php echo $product['img1']; ?>" alt="" />
+                                <div class="offer-badge">
+                                    <?php
+                                    $offn = ($product['fa'] * 100) / $product['price'];
+                                    $off = round(100 - $offn);
+                                    echo $off . '%';
+                                    ?>
+                                </div>
+                            </div>
+                            <div class="cart-text">
+                                <h4><?php echo $product['product_name']; ?></h4>
+                                <div class="cart-item-price">BDT<?php echo $product['fa'];
+                                                                $subtotal += $product['fa'] * $product['qty'];
+                                                                ?>
+                                    <span>BDT<?php echo $product['price']; ?></span>
+                                </div>
+                                <br>
+                                <div class="cart-item-price">
+                                    <?php echo "x" . $product['qty']; ?>
+                                </div>
                             </div>
                         </div>
-                        <div class="cart-text">
-                            <h4><?php echo $product['product_name']; ?></h4>
-                            <div class="cart-item-price">&#8369;<?php echo $product['fa']; 
-                              $subtotal+=$product['fa']*$product['qty']; 
-                            ?>
-                                <span>&#8369;<?php echo $product['price']; ?></span>
-                            </div>
-                            <br>
-                            <div class="cart-item-price">
-                                <?php echo "x".$product['qty']; ?>
-                            </div>
-                        </div>
-                    </div>
                     <?php } ?>
                     <div class="total-checkout-group">
                         <div class="cart-total-dil">
                             <h4>Subtotal</h4>
-                            <span>&#8369;<?php echo $product['total']; ?></span>
+                            <span>BDT<?php echo $product['total']; ?></span>
                         </div>
                         <div class="cart-total-dil pt-3">
                             <h4>Delivery Charges</h4>
-                            <span>&#8369;<?php
-                                echo $product['ship_fee'];
-                                ?></span>
+                            <span>BDT<?php
+                                        echo $product['ship_fee'];
+                                        ?></span>
                         </div>
-                        <?php 
-                            if($product['is_applied']){
+                        <?php
+                        if ($product['is_applied']) {
                         ?>
-                        <div class="cart-total-dil pt-3">
-                            <h4>Promo Applied</h4>
-                            <span>- &#8369;<?php
-                                echo $product['promo'];
-                                ?></span>
-                        </div>
-                    <?php } ?>
-                    <?php 
-                            if($product['is_add_w']){
+                            <div class="cart-total-dil pt-3">
+                                <h4>Promo Applied</h4>
+                                <span>- BDT<?php
+                                            echo $product['promo'];
+                                            ?></span>
+                            </div>
+                        <?php } ?>
+                        <?php
+                        if ($product['is_add_w']) {
                         ?>
-                        <div class="cart-total-dil pt-3">
-                            <h4>From Wallet</h4>
-                            <span>- &#8369;<?php
-                                echo $product['wl_amt'];
-                                ?></span>
-                        </div>
-                    <?php } ?>
+                            <div class="cart-total-dil pt-3">
+                                <h4>From Wallet</h4>
+                                <span>- BDT<?php
+                                            echo $product['wl_amt'];
+                                            ?></span>
+                            </div>
+                        <?php } ?>
                     </div>
                     <div class="main-total-cart">
                         <h2>Total</h2>
-                        <span>&#8369;<?php echo $product['final_amt']; ?></span>
+                        <span>BDT<?php echo $product['final_amt']; ?></span>
                     </div>
                     <div class="cktout">
                         <i class="uil uil-padlock"></i> Secure Checkout
@@ -277,29 +277,29 @@ require('require/top.php');
                 <div class="promoform" id="promoform">
                     <form action="javascript:void(0)">
                         <?php
-                            if($product['is_applied']==0){
+                        if ($product['is_applied'] == 0) {
                         ?>
-                        <input type="text" placeholder="Enter Promocode" id="promocode"/>
-                        <button onclick="apply_promo()">Apply</button>
-                        <?php }else{
+                            <input type="text" placeholder="Enter Promocode" id="promocode" />
+                            <button onclick="apply_promo()">Apply</button>
+                        <?php } else {
                         ?>
-                        <button onclick="remove_promo()" style="width:100%;border-radius:0;">Remove Promo</button>
+                            <button onclick="remove_promo()" style="width:100%;border-radius:0;">Remove Promo</button>
                         <?php
                         } ?>
                     </form>
                 </div>
                 <div class="promoform" id="wt">
                     <form action="javascript:void(0)">
-                    <?php
-                            if($product['is_add_w']==0){
+                        <?php
+                        if ($product['is_add_w'] == 0) {
                         ?>
-                        <button onclick="apply_wallet()" style="width:100%;border-radius:0;">Use</button>
-                        <?php }else{
+                            <button onclick="apply_wallet()" style="width:100%;border-radius:0;">Use</button>
+                        <?php } else {
                         ?>
-                        <button onclick="remove_wallet()" style="width:100%;border-radius:0;">Remove</button>
+                            <button onclick="remove_wallet()" style="width:100%;border-radius:0;">Remove</button>
                         <?php
                         } ?>
-                    
+
                     </form>
                 </div>
             </div>

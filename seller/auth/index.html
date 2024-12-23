@@ -4,15 +4,22 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>E-Agri | Register</title>
-    <link rel="shortcut icon" href="../../assets/images/favicon.png" type="image/x-icon" />
+    <title>AgroLink | Register</title>
+    <link
+      rel="shortcut icon"
+      href="../../assets/images/favicon.png"
+      type="image/x-icon"
+    />
     <link href="./lgcss/password.css" rel="stylesheet" />
     <link href="./lgcss/style.css" rel="stylesheet" />
   </head>
-  <body class="vh-100" >
+  <body class="vh-100">
     <div class="authincation h-200">
-      <div class="container h-100" style="background-color:rgba(255, 255, 255, 0)">
-        <div class="row justify-content-center h-100 align-items-center" >
+      <div
+        class="container h-100"
+        style="background-color: rgba(255, 255, 255, 0)"
+      >
+        <div class="row justify-content-center h-100 align-items-center">
           <div class="col-md-6">
             <div class="authincation-content">
               <div class="row no-gutters">
@@ -25,53 +32,66 @@
                         alt=""
                       />
                     </div>
-                    <h4 class="text-center mb-4">E-Agri</h4>
+                    <h4 class="text-center mb-4">AgroLink</h4>
                     <h4 class="text-center mb-4">Sign up your account</h4>
-                      <div class="form-group">
-                        <label class="mb-1"><strong>Email</strong></label>
-                        <input
-                          type="email"
-                          class="form-control"
-                          placeholder="hello@example.com"
-                          id='email'
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="mb-1"><strong>Mobile</strong></label>
-                        <input
-                          type="number"
-                          class="form-control"
-                          placeholder="Mobile"
-                          id="mobile"
-                        />
-                      </div>
-                      <div class="form-group">
-                        <label class="mb-1"><strong>Password</strong></label>
-                        <input
+                    <div class="form-group">
+                      <label class="mb-1"><strong>Email</strong></label>
+                      <input
+                        type="email"
+                        class="form-control"
+                        placeholder="hello@example.com"
+                        id="email"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label class="mb-1"><strong>Mobile</strong></label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        placeholder="Mobile"
+                        id="mobile"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label class="mb-1"><strong>Password</strong></label>
+                      <input
                         type="password"
                         class="form-control"
                         id="password"
                         placeholder="Password"
                         name="password"
-                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}">
-                      </div>
-                      <div id="message">
-                        <h6>Password must contain the following:</h6>
-                        <p id="letter" class="invalid">A <b>lowercase</b> letter</p>
-                        <p id="capital" class="invalid">A <b>capital (uppercase)</b> letter</p>
-                        <p id="number" class="invalid">A <b>number</b></p>
-                        <p id="length" class="invalid">Minimum <b>8 characters</b></p>
-                      </div>
-                      
-                      <div class="text-center mt-4">
-                        <button id="lgbtn" type="submit" class="btn btn-primary btn-block btn-main" style="background-color: #864AD1; border: 0;" onclick="register()">
-                          Register
-                        </button>
-                      </div>
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                      />
+                    </div>
+                    <div id="message">
+                      <h6>Password must contain the following:</h6>
+                      <p id="letter" class="invalid">
+                        A <b>lowercase</b> letter
+                      </p>
+                      <p id="capital" class="invalid">
+                        A <b>capital (uppercase)</b> letter
+                      </p>
+                      <p id="number" class="invalid">A <b>number</b></p>
+                      <p id="length" class="invalid">
+                        Minimum <b>8 characters</b>
+                      </p>
+                    </div>
+
+                    <div class="text-center mt-4">
+                      <button
+                        id="lgbtn"
+                        type="submit"
+                        class="btn btn-primary btn-block btn-main"
+                        style="background-color: #864ad1; border: 0"
+                        onclick="register()"
+                      >
+                        Register
+                      </button>
+                    </div>
                     <div class="new-account mt-3">
                       <p>
                         Already have an account?
-                        <a style="color:#864AD1;" href="v2/">Sign in</a>
+                        <a style="color: #864ad1" href="v2/">Sign in</a>
                       </p>
                     </div>
                   </div>
