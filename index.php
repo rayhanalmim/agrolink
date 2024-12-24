@@ -10,7 +10,6 @@ if (isset($_GET['utm_source']) || isset($_SESSION['utm_source'])) {
     }
     verify_source($con, $s);
     $featured = get_featured_products($con);
-    //  prx($featured);
 ?>
 
     <div class="main-banner-slider">
